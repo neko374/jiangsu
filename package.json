@@ -7,8 +7,17 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.16.2",
+    "echarts": "^4.9.0",
+    "element-ui": "^2.15.5",
+    "jquery": "^3.6.0",
+    "js-base64": "^3.7.2",
+    "less": "^4.1.1",
+    "less-loader": "^6.0.0",
+    "mockjs": "^1.1.0",
     "vue": "^2.6.14",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.5.2",
     "vuex": "^3.6.2"
   },
@@ -17,6 +26,7 @@
     "@vue/cli-plugin-router": "^4.5.13",
     "@vue/cli-plugin-vuex": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
+    "quill-image-extend-module": "^1.1.2",
     "vue-template-compiler": "^2.6.14"
   }
 }

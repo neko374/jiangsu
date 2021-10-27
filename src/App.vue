@@ -1,32 +1,49 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    
     <router-view/>
   </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  methods:{
+    saveData(val){
+       //在页面加载时读取sessionStorage里的状态信息
+      if (localStorage.getItem(val)) {
+        this.$store.replaceState(
+          Object.assign(
+            {},
+            this.$store.state,
+            JSON.parse(localStorage.getItem(val))
+          )
+        );
+      }
+      //在页面刷新时将vuex里的信息保存到sessionStorage里
+      window.addEventListener("beforeunload", () => {
+        localStorage.setItem(val, "");
+        localStorage.setItem(val, JSON.stringify(this.$store.state));
+      });
+    },
+  },
+	beforeCreated() {
+    console.log("123");
+    this.saveData('loginData');
+    //this.saveData('isLogin');
+  },
+  mounted(){
+   
+  },
+  watch:{
+    //window
+  }
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+</script>
+<style >
+	#app {
+		width: 100%;
+	height: 100%;
+		overflow-x: hidden;
+		
+	}
+	
 </style>
